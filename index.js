@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
-  res.send("Hello world second time");
+  res.send("Hello world third time");
 });
 
 app.post("/api/users/register", (req, res) => {
