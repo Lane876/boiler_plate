@@ -1,4 +1,4 @@
-boiler_plate code for future use
+boilerplate code for future use
 
 1. config/dev.js =>
 
