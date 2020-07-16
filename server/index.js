@@ -13,6 +13,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
+      useFindAndModify: false,
     });
     console.log("MongoDB connected");
   } catch (error) {
@@ -76,4 +77,21 @@ app.post("/api/user/login", (req, res) => {
   });
 });
 
-app.listen(5000, console.log("Server started on port 5000"));
+app.get("/api/user/logout", auth, (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    { token: "", tokenExp: "" },
+    (err, doc) => {
+      if (err) return res.json({ success: false, err });
+      return res.status(200).send({
+        success: true,
+      });
+    }
+  );
+});
+
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
