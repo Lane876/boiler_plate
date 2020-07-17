@@ -4,11 +4,16 @@ import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
+import {Provider} from 'react-redux'
+import store from "./redux/constants";
+import 'materialize-css/dist/css/materialize.min.css'
 
 ReactDOM.render(
+  <Provider store={store}>
   <BrowserRouter>
     <App />
-  </BrowserRouter>,
+  </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 
