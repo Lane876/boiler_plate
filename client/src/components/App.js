@@ -4,8 +4,11 @@ import Home from "./Home";
 import About from "./About";
 import Login from "./Login";
 import Register from "./Register";
+import { useSelector } from "react-redux";
 
 function App() {
+  const name = useSelector(state=>state.user.user)
+  console.log(name);
   return (
     <div>
       <Switch>
